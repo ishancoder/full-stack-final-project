@@ -1,0 +1,17 @@
+<html>
+<head>
+	<title>Shelters</title>
+</head>
+
+<body>
+	{% for each_shelter in shelters %}
+		<div>
+			<h3>{{each_shelter.name}}</h3>
+			<p>{{each_shelter.owner}}</p>
+			<p>{{each_shelter.address}}</p>
+			<p>{{each_shelter.phone}}</p>
+			<p>{{each_shelter.email}}</p>
+		</div>
+	{% endfor %}
+</boby>
+</html>
