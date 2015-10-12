@@ -2,7 +2,12 @@ from flask import Flask, flash, request, render_template, redirect
 
 from sqlalchemy import create_engine
 from sqlalchemy.orm import sessionmaker
+from database_setup import Base, Shelter
 
+engine = create_engine("sqlite:///puppyshelter.db")
+Base.metadata.bind = engine
+DBSession = sessionmaker(bind = engine)
+session = DBSession()
 
 app = Flask(__name__)
 
@@ -10,7 +15,8 @@ app = Flask(__name__)
 @app.route("/")
 @app.route("/shelters/")
 def allShelters():
-	return "<h1>All the shelters</h1>"
+	shelters = session.query(Shelter).all()
+	return render_template("shelters.html", shelters = shelters)
 
 @app.route("/shelters/new/")
 def createShelter():
