@@ -41,5 +41,5 @@ class Shelter(Base):
 		)
 
 ############INSERT AT THE END OF THE FILE#####################################
-engine = create_engine('sqlite:///restaurantmenu.db')
+engine = create_engine('sqlite:///puppyshelter.db')
 Base.metadata.create_all(engine)
