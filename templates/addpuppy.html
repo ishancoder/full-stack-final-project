@@ -4,6 +4,16 @@
 </head>
 
 <body>
-
+	<h1>Add a new Puppy!</h1>
+	<form action="{{url_for('addNewPuppy', shelter_id = shelter.id)}}" method='post'>
+	  <table>
+		<tr><td><input name='name' type='text' placeholder='enter puppy name'/></td></tr>
+		<tr><td><input name='weight' type='text' placeholder='enter weight'/></td></tr>
+		<tr><td><input name='age' type='text' placeholder='enter age'/></td></tr>
+		<tr><td><input name='breed' type='text' placeholder='enter breed'/></td></tr>
+		<tr><td><input name='gender' type='text' placeholder='Enter Gender'/></td></tr>
+		<tr><td><input type='submit' value='Create'/></td></tr>
+	  </table>
+	</form>
 </body>
 </html>

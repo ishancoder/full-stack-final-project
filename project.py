@@ -48,12 +48,23 @@ def allPuppies(shelter_id):
 @app.route("/shelters/<int:shelter_id>/puppies/<int:puppy_id>/profile/")
 def puppyProfile(shelter_id, puppy_id):
 	puppy = session.query(Puppy).filter_by(id = puppy_id).one()
-	shelter = session.query(Shelter).filter_by(id = puppy_id).one()
+	shelter = session.query(Shelter).filter_by(id = shelter_id).one()
 	return render_template('puppyprofile.html', puppy = puppy, shelter = shelter)
 
-@app.route("/shelters/<int:shelter_id>/puppies/new/")
+@app.route("/shelters/<int:shelter_id>/puppies/new/", methods=['GET','POST'])
 def addNewPuppy(shelter_id):
-	return "<h1>Create new puppy</h1>"
+	shelter = session.query(Shelter).filter_by(id = shelter_id).one()
+	if request.method == 'POST':
+		newPuppy = Puppy(name=request.form['name'],
+							weight=float(request.form['weight']),
+							age = int(request.form['age']),
+							breed = request.form['breed'],
+							gender = request.form['gender'],
+							shelter = shelter)
+		session.add(newPuppy)
+		session.commit()
+		return redirect(url_for('allPuppies',shelter_id = shelter.id))
+	return render_template('addpuppy.html', shelter = shelter)
 
 @app.route("/shelters/<int:shelter_id>/puppies/<int:puppy_id>/adopt/")
 def adoptPuppy(shelter_id, puppy_id):
