@@ -4,6 +4,9 @@
 </head>
 
 <body>
+	<a href="{{url_for('createShelter')}}">Create your own shelter</a>
+	<br>
+	<br>
 	{% for each_shelter in shelters %}
 		<div>
 			<h3><a href="{{url_for('allPuppies',shelter_id = each_shelter.id)}}">{{each_shelter.name}}</a></h3>
