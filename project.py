@@ -2,7 +2,7 @@ from flask import Flask, flash, request, render_template, redirect
 
 from sqlalchemy import create_engine
 from sqlalchemy.orm import sessionmaker
-from database_setup import Base, Shelter
+from database_setup import Base, Shelter, Puppy
 
 engine = create_engine("sqlite:///puppyshelter.db")
 Base.metadata.bind = engine
@@ -32,7 +32,9 @@ def deleteShelter(shelter_id):
 
 @app.route("/shelters/<int:shelter_id>/puppies/")
 def allPuppies(shelter_id):
-	return "<h1>All the puppies</h1>"
+	puppies = session.query(Puppy).filter_by(shelter_id = shelter_id).all()
+	shelter = session.query(Shelter).filter_by(id = shelter_id).one()
+	return render_template('puppies.html', shelter = shelter, puppies = puppies)
 
 @app.route("/shelters/<int:shelter_id>/puppies/new/")
 def addNewPuppy(shelter_id):

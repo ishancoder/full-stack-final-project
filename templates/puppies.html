@@ -4,6 +4,24 @@
 </head>
 
 <body>
-
+	<h1>{{shelter.name}}'s Puppies</h1>
+	<table border="1" style="width:100%; border-collapse: collapse">
+		<tr>
+			<th>Name</th>
+			<th>Gender</th>
+			<th>Breed</th>
+			<th>Weight</th>
+			<th>Age</th>
+		</tr>
+		{% for pup in puppies %}
+			<tr>
+				<td>{{pup.name}}</td>
+				<td>{{pup.gender}}</td>
+				<td>{{pup.breed}}</td>
+				<td>{{pup.weight}}</td>
+				<td>{{pup.age}}</td>
+			</tr>
+		{% endfor %}
+	</table>
 </body>
 </html>

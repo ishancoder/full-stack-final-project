@@ -9,6 +9,13 @@ Base.metadata.bind = engine
 DBSession = sessionmaker(bind = engine)
 session = DBSession()
 
+try:
+    session.query(Shelter).delete()
+    session.query(Puppy).delete()
+    session.commit()
+except:
+    session.rollback()
+
 shelter1 = Shelter(name = "Rajat Patwa puppy shelter",
 					address = "Street no. 7, House no. 8 ANewGalaxy, Mars.",
 					phone = "a cool phone number",
