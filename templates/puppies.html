@@ -15,6 +15,7 @@
 			<th>Breed</th>
 			<th>Weight</th>
 			<th>Age</th>
+			<th>Adopt Puppy</th>
 		</tr>
 		{% for pup in puppies %}
 			<tr>
@@ -23,6 +24,7 @@
 				<td>{{pup.breed}}</td>
 				<td>{{pup.weight}}</td>
 				<td>{{pup.age}}</td>
+				<td><a href="{{url_for('adoptPuppy',shelter_id = shelter.id, puppy_id = pup.id)}}">Adobt {{pup.name}}</a>
 			</tr>
 		{% endfor %}
 	</table>
