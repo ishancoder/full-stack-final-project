@@ -40,6 +40,46 @@ class Shelter(Base):
 			nullable = False
 		)
 
+
+class Puppy(Base):
+	__tablename__ = 'puppy'
+	id = Column(
+			Integer,
+			primary_key = True
+		)
+
+	name = Column(
+			String(10),
+			nullable = False
+		)
+
+	weight = Column(
+			Double,
+			nullable = False
+		)
+
+	age = Column(
+			Integer,
+			nullable = False
+		)
+
+	breed = Column(
+			String(15),
+			nullable = False
+		)
+
+	gender = Column(
+			String(7),
+			nullable = False
+		)
+
+	shelter_id = Column(
+			Integer,
+			ForeignKey('shelter.id')
+		)
+
+	shelter = relationship(Shelter)
+
 ############INSERT AT THE END OF THE FILE#####################################
 engine = create_engine('sqlite:///puppyshelter.db')
 Base.metadata.create_all(engine)
