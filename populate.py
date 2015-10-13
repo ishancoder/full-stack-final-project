@@ -1,6 +1,6 @@
 from sqlalchemy import create_engine
 from sqlalchemy.orm import sessionmaker
-from database_setup import Base, Shelter
+from database_setup import Base, Shelter, Puppy
 
 engine = create_engine('sqlite:///puppyshelter.db')
 
@@ -16,4 +16,14 @@ shelter1 = Shelter(name = "Rajat Patwa puppy shelter",
 					owner = "Rajat Patwa")
 
 session.add(shelter1)
+session.commit()
+
+puppy1 = Puppy(name = "Tommy",
+				weight = 5.35,
+				age = 2,
+				breed = 'German Shepherd',
+				gender = 'Male',
+				shelter = shelter1)
+
+session.add(puppy1)
 session.commit()
