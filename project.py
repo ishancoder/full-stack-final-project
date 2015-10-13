@@ -36,6 +36,11 @@ def allPuppies(shelter_id):
 	shelter = session.query(Shelter).filter_by(id = shelter_id).one()
 	return render_template('puppies.html', shelter = shelter, puppies = puppies)
 
+@app.route("/shelters/<int:shelter_id>/puppies/<int:puppy_id>/profile/")
+def puppyProfile(shelter_id, puppy_id):
+	puppy = session.query(Puppy).filter_by(id = puppy_id).one()
+	return render_template('puppyprofile.html')
+
 @app.route("/shelters/<int:shelter_id>/puppies/new/")
 def addNewPuppy(shelter_id):
 	return "<h1>Create new puppy</h1>"
