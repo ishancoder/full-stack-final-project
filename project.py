@@ -18,9 +18,11 @@ def allShelters():
 	shelters = session.query(Shelter).all()
 	return render_template("shelters.html", shelters = shelters)
 
-@app.route("/shelters/new/")
+@app.route("/shelters/new/", methods = ['GET','POST'])
 def createShelter():
-	return "<h1>Create a new shelter</h1>"
+	if request.method == 'POST':
+		return "POSTED!!"
+	return render_template('addshelter.html')
 
 @app.route("/shelters/<int:shelter_id>/edit/")
 def editShelter(shelter_id):
