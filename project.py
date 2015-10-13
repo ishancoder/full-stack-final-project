@@ -1,4 +1,4 @@
-from flask import Flask, flash, request, render_template, redirect
+from flask import Flask, flash, request, render_template, redirect,url_for
 
 from sqlalchemy import create_engine
 from sqlalchemy.orm import sessionmaker
@@ -21,7 +21,14 @@ def allShelters():
 @app.route("/shelters/new/", methods = ['GET','POST'])
 def createShelter():
 	if request.method == 'POST':
-		return "POSTED!!"
+		newShelter = Shelter(name = request.form['name'],
+								address = request.form['address'],
+								phone = request.form['phone'],
+								email = request.form['email'],
+								owner = request.form['owner'])
+		session.add(newShelter)
+		session.commit()
+		return redirect(url_for('allShelters'))
 	return render_template('addshelter.html')
 
 @app.route("/shelters/<int:shelter_id>/edit/")

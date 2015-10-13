@@ -7,11 +7,11 @@
 	<h1>Welcome add a new Shelter and Help the puppies!</h1>
 	<form action="{{url_for('createShelter')}}" method='post'>
 	  <table>
-		<tr><td><input type='text' placeholder='enter shelter name'/></td></tr>
-		<tr><td><input type='text' placeholder='enter address'/></td></tr>
-		<tr><td><input type='text' placeholder='enter phone no.'/></td></tr>
-		<tr><td><input type='text' placeholder='enter email'/></td></tr>
-		<tr><td><input type='text' placeholder='Enter your name'/></td></tr>
+		<tr><td><input name='name' type='text' placeholder='enter shelter name'/></td></tr>
+		<tr><td><input name='address' type='text' placeholder='enter address'/></td></tr>
+		<tr><td><input name='phone' type='text' placeholder='enter phone no.'/></td></tr>
+		<tr><td><input name='email' type='text' placeholder='enter email'/></td></tr>
+		<tr><td><input name='owner' type='text' placeholder='Enter your name'/></td></tr>
 		<tr><td><input type='submit' value='Create'/></td></tr>
 	  </table>
 	</form>
