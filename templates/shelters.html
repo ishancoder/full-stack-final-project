@@ -6,7 +6,7 @@
 <body>
 	{% for each_shelter in shelters %}
 		<div>
-			<h3>{{each_shelter.name}}</h3>
+			<h3><a href="{{url_for('allPuppies',shelter_id = each_shelter.id)}}">{{each_shelter.name}}</a></h3>
 			<p>{{each_shelter.owner}}</p>
 			<p>{{each_shelter.address}}</p>
 			<p>{{each_shelter.phone}}</p>
