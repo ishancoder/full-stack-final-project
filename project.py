@@ -66,6 +66,13 @@ def addNewPuppy(shelter_id):
 		return redirect(url_for('allPuppies',shelter_id = shelter.id))
 	return render_template('addpuppy.html', shelter = shelter)
 
+@app.route("/shelters/<int:shelter_id>/puppies/<int:puppy_id>/delete/")
+def deletePuppy(shelter_id, puppy_id):
+	pup = session.query(Puppy).filter_by(id = puppy_id).one()
+	session.delete(pup)
+	session.commit()
+	return redirect(url_for("allPuppies",shelter_id = shelter_id))
+
 @app.route("/shelters/<int:shelter_id>/puppies/<int:puppy_id>/adopt/")
 def adoptPuppy(shelter_id, puppy_id):
 	return "<ht>Adobt this adorable puppy</h1>"

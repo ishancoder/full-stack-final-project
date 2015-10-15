@@ -24,7 +24,7 @@
 				<td>{{pup.breed}}</td>
 				<td>{{pup.weight}}</td>
 				<td>{{pup.age}}</td>
-				<td><a href="{{url_for('adoptPuppy',shelter_id = shelter.id, puppy_id = pup.id)}}">Adobt {{pup.name}}</a>
+				<td><a href="{{url_for('deletePuppy',shelter_id = shelter.id, puppy_id = pup.id)}}">Remove {{pup.name}}</a>
 			</tr>
 		{% endfor %}
 	</table>
