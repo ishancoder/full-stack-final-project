@@ -31,9 +31,12 @@ def createShelter():
 		return redirect(url_for('allShelters'))
 	return render_template('addshelter.html')
 
-@app.route("/shelters/<int:shelter_id>/edit/")
-def editShelter(shelter_id):
-	return "<h1>Edit puppy shelter</h1>"
+@app.route("/shelters/<int:shelter_id>/update/", methods=['GET','POST'])
+def updateShelter(shelter_id):
+	shelter = session.query(Shelter).filter_by(id = shelter_id).one()
+	if request.method == 'POST':
+		pass
+	return render_template('updateshelter.html',shelter = shelter)
 
 @app.route("/shelters/<int:shelter_id>/delete/")
 def deleteShelter(shelter_id):

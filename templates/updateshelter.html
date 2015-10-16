@@ -4,6 +4,16 @@
 </head>
 
 <body>
-
+	<h2>Update {{shelter.name}}</h2>
+	<form action="{{url_for('updateShelter', shelter_id = shelter.id)}}" method='post'>
+	  <table>
+		<tr><td><input name='name' type='text' value='{{shelter.name}}'/></td></tr>
+		<tr><td><input name='address' type='text' value='{{shelter.address}}'/></td></tr>
+		<tr><td><input name='phone' type='text' value='{{shelter.phone}}'/></td></tr>
+		<tr><td><input name='email' type='text' value='{{shelter.email}}'/></td></tr>
+		<tr><td><input name='owner' type='text' value='{{shelter.owner}}'/></td></tr>
+		<tr><td><input type='submit' value='Update'/></td></tr>
+	  </table>
+	</form>
 </body>
 </html>
