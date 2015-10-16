@@ -35,7 +35,14 @@ def createShelter():
 def updateShelter(shelter_id):
 	shelter = session.query(Shelter).filter_by(id = shelter_id).one()
 	if request.method == 'POST':
-		pass
+		shelter.name = request.form['name']
+		shelter.address = request.form['address']
+		shelter.phone = request.form['phone']
+		shelter.email = request.form['email']
+		shelter.owner = request.form['owner']
+		session.add(shelter)
+		session.commit()
+		return redirect(url_for('allShelters'))
 	return render_template('updateshelter.html',shelter = shelter)
 
 @app.route("/shelters/<int:shelter_id>/delete/")
